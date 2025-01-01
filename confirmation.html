@@ -1,0 +1,65 @@
+<!-- confirmation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choice Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #343a40;
+            font-size: 24px;
+        }
+        p {
+            color: #495057;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .choices {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Perfect Selections, Alicia!</h1>
+        <p>Your choices are in, and I’m already looking forward to sharing this moment with you</p>
+
+        <p class="choices" id="lunch-choice">Lunch: </p>
+        <p class="choices" id="dinner-choice">Dinner: </p>
+
+        <p>I love your picks and I can’t wait to see what the day brings, but I know it’ll be perfect with you by my side, my Chief Partner Officer</p>
+    </div>
+
+    <script>
+        // Retrieve the choices from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const lunchChoice = urlParams.get('lunch');
+        const dinnerChoice = urlParams.get('dinner');
+
+        // Display the choices on the confirmation page
+        document.getElementById('lunch-choice').textContent = `Lunch: ${lunchChoice}`;
+        document.getElementById('dinner-choice').textContent = `Dinner: ${dinnerChoice}`;
+    </script>
+</body>
+</html>

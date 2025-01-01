@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #343a40;
+            font-size: 24px;
+        }
+        p {
+            color: #495057;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            color: #495057;
+            font-size: 18px;
+        }
+        .options-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .option {
+            display: flex; /* Added to align text properly */
+            justify-content: center; /* Horizontally centers the text */
+            align-items: center; /* Vertically centers the text */
+            padding: 15px 20px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            flex: 1;
+            margin: 0 5px;
+            text-align: center;
+        }
+        .option:hover {
+            transform: scale(1.05);
+            background-color: #007bff;
+            color: white;
+        }
+        .lunch-option {
+            background-color: #f1f3f5;
+        }
+        .dinner-option {
+            background-color: #f1f3f5;
+        }
+        .option.selected {
+            background-color: #007bff;
+            color: white;
+        }
+        button {
+            padding: 10px;
+            margin-top: 20px;
+            width: 100%;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Team, Alicia!</h1>
+        <p>As the Chief Partner Officer, your first task is to make some critical decisions for our first official meeting. Please choose your preferences:</p>
+
+        <label for="lunch">Gourmet Lunch:</label>
+        <div class="options-container">
+            <div class="option lunch-option" id="lunch-brahma" data-value="Brahma Brews">
+                Brahma Brews
+            </div>
+             <div class="option lunch-option" id="lunch-bastian" data-value="Bastian">
+                Bastian
+            </div>
+            <div class="option lunch-option" id="lunch-smokehouse" data-value="Smoke House Deli">
+                Smoke House Deli
+            </div>
+        </div>
+
+        <label for="dinner">Evening Feasts:</label>
+        <div class="options-container">
+            <div class="option dinner-option" id="dinner-toit" data-value="TOIT">
+                TOIT
+            </div>
+            <div class="option dinner-option" id="dinner-chianti" data-value="Chianti">
+                Chianti
+            </div>
+            <div class="option dinner-option" id="dinner-mykos" data-value="Mykos">
+                Mykos
+            </div>
+        </div>
+
+        <button id="submit">Confirm Choices</button>
+    </div>
+
+    <script>
+        const lunchOptions = document.querySelectorAll('.lunch-option');
+        const dinnerOptions = document.querySelectorAll('.dinner-option');
+
+        let selectedLunch = null;
+        let selectedDinner = null;
+
+        // Function to handle option selection
+        function selectOption(option, isLunch) {
+            const options = isLunch ? lunchOptions : dinnerOptions;
+            options.forEach(opt => opt.classList.remove('selected'));
+
+            option.classList.add('selected');
+
+            if (isLunch) {
+                selectedLunch = option.getAttribute('data-value');
+            } else {
+                selectedDinner = option.getAttribute('data-value');
+            }
+        }
+
+        // Add event listeners to lunch options
+        lunchOptions.forEach(option => {
+            option.addEventListener('click', () => selectOption(option, true));
+        });
+
+        // Add event listeners to dinner options
+        dinnerOptions.forEach(option => {
+            option.addEventListener('click', () => selectOption(option, false));
+        });
+
+        // Handle the form submission
+        document.getElementById('submit').addEventListener('click', function () {
+            if (!selectedLunch || !selectedDinner) {
+                alert('Please complete all choices to proceed.');
+                return;
+            }
+
+            // Redirect to the confirmation page with choices in URL parameters
+            window.location.href = `confirmation.html?lunch=${encodeURIComponent(selectedLunch)}&dinner=${encodeURIComponent(selectedDinner)}`;
+        });
+    </script>
+</body>
+</html>
+
