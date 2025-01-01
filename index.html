@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chief Partner Officer Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: #ffffff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #343a40;
+        }
+        p {
+            color: #495057;
+            line-height: 1.6;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+        .learn-more {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 14px;
+            color: #495057;
+            display: none;
+        }
+        .learn-more h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #343a40;
+        }
+        .learn-more ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .learn-more ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Greetings, Alicia</p>
+        <h1>Chief Partner Officer (CPO) Application</h1>
+        <p>
+            <strong>Position Title:</strong> Chief Partner Officer (CPO)<br>
+            <strong>Hiring Manager:</strong> Aditya Girdhar<br>
+            <strong>Location:</strong> Full-time proximity to my heart (Onsite preferred, remote negotiable)<br>
+        </p>
+        <p>
+            I am officially opening applications for the role of Chief Partner Officer (Wife) to oversee and co-lead all major life initiatives.
+            You have been exclusively pre-qualified based on exceptional credentials, proven compatibility, and unmatched synergy.
+        </p>
+        <button id="toggle-learn-more">Learn More About the Role</button>
+        <div class="learn-more" id="learn-more-section">
+            <h2>Learn More About the Role</h2>
+            <h3>Key Responsibilities</h3>
+            <ul>
+                <li>Co-manage life’s strategic roadmap, ensuring alignment on shared goals and milestones.</li>
+                <li>Lead initiatives for mutual growth, happiness, and memorable experiences.</li>
+                <li>Provide unwavering support in high and low moments, with an emphasis on empathy and partnership.</li>
+                <li>Oversee all relationship governance with kindness, respect, and fairness.</li>
+            </ul>
+            <h3>Preferred Qualifications</h3>
+            <ul>
+                <li>A deep understanding of me, my quirks, and aspirations, with demonstrated expertise in navigating them effectively.</li>
+                <li>Exceptional interpersonal skills, including active listening, conflict resolution, and strategic humour deployment.</li>
+                <li>Long-term vision and commitment to building a life together.</li>
+            </ul>
+            <h3>What I Offer</h3>
+            <ul>
+                <li>Exclusive access to my unwavering love, support, and loyalty.</li>
+                <li>Joint ownership of all shared dreams, adventures, and achievements.</li>
+                <li>A dedicated partner committed to your happiness, well-being, and growth.</li>
+                <li>Full transparency, accountability, and an equal say in all decisions affecting our shared journey.</li>
+            </ul>
+            <h3>Application Process</h3>
+            <p>To officially accept this role, please respond to this message with, "I accept. I accept. I accept." No interviews or additional documentation required - your track record speaks for itself.</p>
+        </div>
+        <div class="button-container">
+            <button id="accept-button">I Accept</button>
+            <button id="decline-button">I Don’t Accept</button>
+        </div>
+        <p id="error-message">I'm sure that was a misclick.</p>
+    </div>
+
+    <script>
+        const learnMoreButton = document.getElementById('toggle-learn-more');
+        const learnMoreSection = document.getElementById('learn-more-section');
+        const acceptButton = document.getElementById('accept-button');
+        const declineButton = document.getElementById('decline-button');
+        const errorMessage = document.getElementById('error-message');
+
+        let acceptClickCount = 0;
+
+        learnMoreButton.addEventListener('click', () => {
+            if (learnMoreSection.style.display === 'none' || !learnMoreSection.style.display) {
+                learnMoreSection.style.display = 'block';
+            } else {
+                learnMoreSection.style.display = 'none';
+            }
+        });
+
+        acceptButton.addEventListener('click', function () {
+            acceptClickCount++;
+            if (acceptClickCount === 3) {
+                // Redirect to the onboarding page after the third click
+                window.location.href = 'onboarding.html';
+            }
+        });
+
+        declineButton.addEventListener('click', function () {
+            errorMessage.style.display = 'block';
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
